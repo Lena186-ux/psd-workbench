@@ -1,0 +1,1 @@
+{"name":"psd-workbench","private":true,"version":"1.0.0","type":"module","scripts":{"dev":"vite --host 127.0.0.1","build":"vite build","deploy":"vercel --prod"},"dependencies":{"ag-psd":"^31.0.3","vercel":"^63.1.2","vite":"^8.3.4"}}
