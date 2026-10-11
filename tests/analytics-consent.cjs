@@ -1,0 +1,12 @@
+const fs=require('node:fs'), vm=require('node:vm'), assert=require('node:assert/strict');
+const source=fs.readFileSync('analytics.js','utf8').replace('export function track','function track');
+function run(choice, host='psdworkbench.com') {
+ const nodes={};for(const id of ['#analytics-choice','#analytics-reject','#analytics-accept','#analytics-settings'])nodes[id]={hidden:false,addEventListener(){},focus(){},querySelector(){return nodes['#analytics-reject'];}};
+ const scripts=[], store={};if(choice)store['psdw-analytics-consent-v1']=JSON.stringify(choice);
+ const document={cookie:'',title:'PSD tool',referrer:'https://example.com/private?q=email',head:{append(s){scripts.push(s.src)}},body:{append(n){nodes['#analytics-choice']=n}},querySelector(s){return nodes[s]},createElement(){return {dataset:{},setAttribute(){},querySelector(){return nodes['#analytics-reject'];}}}};
+ const c={document,window:{},location:{hostname:host,origin:'https://'+host,pathname:'/',reload(){c.reloaded=true;}},localStorage:{getItem(k){return store[k]},setItem(k,v){store[k]=v}},URL,Date};vm.createContext(c);vm.runInContext(source,c);return {c,nodes,scripts};
+}
+let t=run();assert.equal(t.scripts.length,0);t.c.track('psd_file_selected',{source:'picker'});assert.equal(t.scripts.length,0);t.nodes['#analytics-reject'].onclick();assert.equal(t.scripts.length,0);
+t.nodes['#analytics-accept'].onclick();assert.equal(t.scripts.length,2);t.c.track('psd_file_selected',{source:'picker',filename:'PRIVATE.psd',reason:'raw private exception'});let event=t.c.window.dataLayer.at(-1);assert.deepEqual(JSON.parse(JSON.stringify(event[2])),{send_to:'G-22G95ZX01G',source:'picker'});assert.equal(t.c.window.dataLayer.find(x=>x[0]==='config')[2].page_referrer,'https://example.com/');const count=t.c.window.dataLayer.length;t.c.track('arbitrary_private_event');assert.equal(t.c.window.dataLayer.length,count);t.nodes['#analytics-reject'].onclick();assert.ok(t.c.reloaded);t.c.track('psd_file_selected');assert.equal(t.c.window.dataLayer.at(-1)[0],'consent');
+assert.equal(run({accepted:true,at:0}).scripts.length,0);assert.equal(run({accepted:false,at:Date.now()}).scripts.length,0);assert.equal(run({accepted:true,at:Date.now()},'localhost').scripts.length,0);assert.equal(run({accepted:true,at:Date.now()}).scripts.length,2);
+console.log('PASS: consent gating, revocation, expiry, production-only loading, event allowlist and sensitive parameter filtering');
