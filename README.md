@@ -4,7 +4,7 @@ Independent, browser-local PSD inspection and PNG extraction tool. Static Englis
 
 ## Build
 
-`pnpm install` then `pnpm build`. Deploy `dist` to static hosting. Production canonical domain: https://psdworkbench.com.
+`pnpm install` then `pnpm build`. After editing page content, run `node generate.mjs` before building. Deploy `dist` to static hosting. Production canonical domain: https://psdworkbench.com.
 
 ## Scope
 
@@ -12,6 +12,6 @@ Independent, browser-local PSD inspection and PNG extraction tool. Static Englis
 
 ## Upstream review
 
-PhotoCraft upstream https://github.com/storytold/photocraft exists and describes Rust native/WASM builds; README reports early alpha. Code MIT OR Apache-2.0, third-party assets separately attributed. This site does not bundle its engine or assets. The smaller ag-psd integration supports the focused first release without a Rust/WASM build pipeline.
+PhotoCraft upstream https://github.com/storytold/photocraft describes a separate Rust image editor with layered PSD editing capabilities (checked October 11, 2026). Consult upstream documentation for current capabilities. This site does not bundle its engine or assets. The smaller ag-psd integration supports the focused browser utility.
 
-SEO terms are page intent labels, not claims of verified volume, difficulty or ranking. Gefei `load_guide(keyword)` cost 2 credits, request req_47a1e20e678365ac.
+SEO audit and keyword evidence: [SEO-AUDIT.md](SEO-AUDIT.md). The homepage owns online PSD viewing; `/psd-viewer/` permanently redirects to it. Conversion and PhotoCraft workflow content have distinct canonical pages. Tool metrics are estimates and snapshots, not a ranking guarantee.

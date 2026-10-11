@@ -1,1 +1,68 @@
-{"buildCommand":"pnpm build","outputDirectory":"dist","framework":"vite","cleanUrls":true,"headers":[{"source":"/(.*)","headers":[{"key":"X-Content-Type-Options","value":"nosniff"},{"key":"Referrer-Policy","value":"strict-origin-when-cross-origin"},{"key":"Content-Security-Policy","value":"default-src 'self'; script-src 'self'; worker-src 'self' blob:; img-src 'self' blob: data:; style-src 'self' 'unsafe-inline'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"}]}]}
+{
+  "buildCommand": "pnpm build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self'; worker-src 'self' blob:; img-src 'self' blob: data:; style-src 'self' 'unsafe-inline'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
+        }
+      ]
+    }
+  ],
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/psd-viewer",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/psd-viewer/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/psd-to-png/index.html",
+      "destination": "/psd-to-png/",
+      "permanent": true
+    },
+    {
+      "source": "/photocraft-guide/index.html",
+      "destination": "/photocraft-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/privacy/index.html",
+      "destination": "/privacy/",
+      "permanent": true
+    },
+    {
+      "source": "/terms/index.html",
+      "destination": "/terms/",
+      "permanent": true
+    },
+    {
+      "source": "/licenses/index.html",
+      "destination": "/licenses/",
+      "permanent": true
+    }
+  ]
+}
