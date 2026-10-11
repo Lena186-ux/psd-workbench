@@ -2,9 +2,9 @@
 
 Date: 2026-10-11 (Asia/Shanghai)
 
-Repository: https://github.com/Lena186-ux/psd-workbench — main, initial implementation commit 809f0cb.
+Repository: https://github.com/Lena186-ux/psd-workbench — main, implementation commit 45d8cec.
 
-Vercel: independent project `psd-workbench`, production deployment dpl_FnmXxa7GYTpEwV5XDfxi3kEmzzVn returned READY. Public fallback URL https://psd-workbench.vercel.app.
+Vercel: independent project `psd-workbench`, production deployment dpl_5XEQaoWbPxW2iSbubUyGf9wLQYFw returned READY. Public fallback URL https://psd-workbench.vercel.app.
 
 DNS applied at NameSilo:
 - @ A 216.198.79.1, TTL 3600
@@ -19,3 +19,5 @@ Build: Vite production build passed; seven static HTML routes plus sitemap, robo
 Automatic GitHub deployment connection failed; Vercel CLI deployments work with existing authentication. No account permissions expanded.
 
 Gefei: load_guide(keyword), 2 credits, req_47a1e20e678365ac. No keyword metrics claimed.
+
+Final domain evidence: Vercel domains verify returned configured-correctly for both apex and www. Authoritative DNS returned both apex A records and the www CNAME. HTTPS certificate validation succeeded at both authoritative targets: apex HTTP 200, www HTTP 308 with Location https://psdworkbench.com/. Seven pages plus robots.txt, sitemap.xml and third-party-notices.txt returned HTTP 200 at the production alias. This machine still had cached old DNS during ordinary custom-domain requests; no DNS/security settings were changed to bypass it.
